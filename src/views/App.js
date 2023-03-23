@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss'
 import React from 'react'
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <p>
           Hello world with ReactJS Hỏi Dân IT
         </p>
+        <h1 className="demo">Huỳnh Nhật Vỹ</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
