@@ -3,15 +3,6 @@ import logo from './logo.svg'
 import './App.scss'
 import MyComponent from './Example/MyComponent'
 
-function formatName(user) {
-	return user.firstName + " "+  user.lastName
-}
-
-const user = {
-	firstName: 'Vy',
-	lastName: 'Huynh'
-}
-
 const App = () => {
 	return (
 	<div className="App">
@@ -20,7 +11,6 @@ const App = () => {
 		<p>
 			Hello world with ReactJS Hỏi Dân IT
 		</p>
-		<h1>Xin chao { formatName(user) }</h1>
 		<MyComponent />
 		<a
 			className="App-link"
