@@ -1,0 +1,37 @@
+.list-todo-container {
+    margin-top: 50px;
+
+    button {
+        cursor: pointer;
+    }
+
+    .add-todo {
+        button {
+            margin-left: 10px;
+        }
+    }
+
+    .list-todo-content {
+        width: 400px;
+        margin: 0 auto;
+
+        .todo-child {
+            height: 40px;
+            border-bottom: 3px solid grey;
+            margin: 10px;
+            text-align: left;
+
+            &:first-child {
+                border-top: 3px solid grey;
+            }
+
+            span {
+                margin-right: 5px;
+            }
+
+            .edit {
+                margin: 0 10px;
+            }
+        }
+    }
+}

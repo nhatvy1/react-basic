@@ -1,4 +1,5 @@
 import React from "react";
+import './Demo.scss'
 
 class ChildComponent extends React.Component {
     state = {
@@ -11,6 +12,12 @@ class ChildComponent extends React.Component {
         })
     }
 
+    handleOnClickDelete = (job) => {
+        // alert('Click me')
+        console.log('>>> handleOnClick')
+        this.props.deleteJob(job)
+    }
+
     render() {
         let { arrJobs } = this.props
         let { showJobs} = this.state 
@@ -19,14 +26,14 @@ class ChildComponent extends React.Component {
         return (
             <>
                 { showJobs === false ?
-                    <div><button onClick={() =>this.handleShowHide()}>Show</button></div> 
+                    <div><button onClick={() =>this.handleShowHide()} className="btn-show">Show</button></div> 
                     :
                     <>
                         <div className="job-list">
                             {
                                 arrJobs.map((item, index) => {
                                     return (
-                                        <div key={index}>{item.title} - {item.salary}</div>
+                                        <div key={index}>{item.title} - {item.salary} <span onClick={()=> this.handleOnClickDelete(item)}>X</span></div>
                                     )
                                 })
                             }

@@ -1,9 +1,8 @@
 import React from "react";
 import ChildComponent from "./ChildComponent";
+import AddComponent from "./AddComponent";
 class MyComponent extends React.Component {
     state = {
-        firstName: 'Huynh Nhat',
-        lastName: 'Vy',
         arrJobs: [
             {id: 1, title: 'Developer', salary: '500'},
             {id: 2, title: 'Tester', salary: '300'},
@@ -11,54 +10,39 @@ class MyComponent extends React.Component {
         ]
     }
 
-    handleChangeFirstName = (event) => {
+    addNewJob = (job) => {
+        console.log('Check job from parent:', job)  
         this.setState({
-            firstName: event.target.value
+            arrJobs: [...this.state.arrJobs, job]
+        })  
+    }
+    
+    deleteJob = (job) => {
+        let currentJob = this.state.arrJobs
+        currentJob = currentJob.filter(item => item.id !== job.id)
+        this.setState({
+            arrJobs: currentJob
         })
     }
 
-    handleChangeLastName = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
+    componentDidUpdate(prevProps, prevState) {
+        console.log('Run did update:', 'prev state:', prevState, 'current state:', this.state )
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log('>>> check data input:', this.state)
+    componentDidMount() {
+        console.log('Run component did mount')
     }
 
     render() {
         return (
             <>
-                <div className="main">
-                    <form className="form">
-                        <h3 className="heading">Thực hành form</h3>
-                        <p className="desc">Học lập trình tại Hỏi Dân IT </p>
-                        <div className="form-group">
-                            <label htmlFor="firstName" className="form-label">Họ và tên đệm</label>
-                            <input 
-                                type="text" placeholder="VD: Huỳnh Nhật" className="form-control" 
-                                onChange={(event) => this.handleChangeFirstName(event)}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="lastName" className="form-label">Tên</label>
-                            <input 
-                                type="text" placeholder="VD: Vỹ" className="form-control" 
-                                onChange={(event) => this.handleChangeLastName(event)}
-                            />
-                        </div>
-                        <input
-                            type="submit" value="Submit" className="form-submit"
-                            onClick={(event) => this.handleSubmit(event)}
-                        />
-                    </form>
-                </div>
+                <AddComponent 
+                    addNewJob={this.addNewJob}
+                />
 
                 <ChildComponent
                     arrJobs={this.state.arrJobs}
+                    deleteJob={this.deleteJob}
                 />
             </>
         )
