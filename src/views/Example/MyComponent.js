@@ -1,33 +1,69 @@
 import React from "react";
-
+import ChildComponent from "./ChildComponent";
 class MyComponent extends React.Component {
     state = {
-        name: 'Leo Messi',
-        channel: 'Barcelona'
+        firstName: 'Huynh Nhat',
+        lastName: 'Vy',
+        arrJobs: [
+            {id: 1, title: 'Developer', salary: '500$'},
+            {id: 2, title: 'Tester', salary: '300$'},
+            {id: 3, title: 'Data Engineer', salary: '1000$'},
+        ]
     }
 
-    handleOnChangeName = (event) => {
+    handleChangeFirstName = (event) => {
         this.setState({
-            name: event.target.value
+            firstName: event.target.value
         })
     }
 
-    handleClickButton = () => {
-        alert('Click me')
+    handleChangeLastName = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log('>>> check data input:', this.state)
     }
 
     render() {
-
+        console.log(this.state)
         return (
             <>
-                <input type="text" value={this.state.name}
-                    onChange={(event) => this.handleOnChangeName(event)}
-                />
-                <div>My name { this.state['name'] }</div>
-                <div className="second">My youtube channel: {this.state.channel}</div>
-                <div className="third">
-                    <button onClick={() => this.handleClickButton()}>Click me</button>
+                <div className="main">
+                    <form className="form">
+                        <h3 className="heading">Thực hành form</h3>
+                        <p className="desc">Học lập trình tại Hoi Dan IT </p>
+                        <div className="form-group">
+                            <label htmlFor="firstName" className="form-label">Họ và tên đệm</label>
+                            <input 
+                                type="text" placeholder="VD: Huỳnh Nhật" className="form-control" 
+                                onChange={(event) => this.handleChangeFirstName(event)}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="lastName" className="form-label">Tên</label>
+                            <input 
+                                type="text" placeholder="VD: Vỹ" className="form-control" 
+                                onChange={(event) => this.handleChangeLastName(event)}
+                            />
+                        </div>
+                        <input
+                            type="submit" value="Submit" className="form-submit"
+                            onClick={(event) => this.handleSubmit(event)}
+                        />
+                    </form>
                 </div>
+
+                <ChildComponent
+                    name={this.state.firstName}
+                    age={22}
+                    address={'Gia Lai'}
+                    arrJobs={this.state.arrJobs}
+                />
             </>
         )
     }
