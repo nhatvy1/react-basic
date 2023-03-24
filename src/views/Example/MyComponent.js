@@ -5,9 +5,9 @@ class MyComponent extends React.Component {
         firstName: 'Huynh Nhat',
         lastName: 'Vy',
         arrJobs: [
-            {id: 1, title: 'Developer', salary: '500$'},
-            {id: 2, title: 'Tester', salary: '300$'},
-            {id: 3, title: 'Data Engineer', salary: '1000$'},
+            {id: 1, title: 'Developer', salary: '500'},
+            {id: 2, title: 'Tester', salary: '300'},
+            {id: 3, title: 'Data Engineer', salary: '1000'},
         ]
     }
 
@@ -29,13 +29,12 @@ class MyComponent extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <>
                 <div className="main">
                     <form className="form">
                         <h3 className="heading">Thực hành form</h3>
-                        <p className="desc">Học lập trình tại Hoi Dan IT </p>
+                        <p className="desc">Học lập trình tại Hỏi Dân IT </p>
                         <div className="form-group">
                             <label htmlFor="firstName" className="form-label">Họ và tên đệm</label>
                             <input 
@@ -59,9 +58,6 @@ class MyComponent extends React.Component {
                 </div>
 
                 <ChildComponent
-                    name={this.state.firstName}
-                    age={22}
-                    address={'Gia Lai'}
                     arrJobs={this.state.arrJobs}
                 />
             </>
